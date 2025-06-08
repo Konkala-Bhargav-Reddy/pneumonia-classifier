@@ -1,23 +1,32 @@
-# Pneumonia Classifier using CNN (PneumoniaMNIST)
+# Pneumonia Classification using ResNet-50 🫁
 
-This repository contains code to train a CNN model to classify chest X-rays as Pneumonia or Normal using the PneumoniaMNIST dataset.
+This project uses **transfer learning** with ResNet-50 to classify chest X-ray images from the **PneumoniaMNIST** dataset into pneumonia or normal classes.
 
-## 📂 Dataset
-- Download: https://www.kaggle.com/datasets/rijulshr/pneumoniamnist/data
-- Upload `pneumoniamnist.npz` into `/content` if using Colab.
+## 🧪 Dataset
+The dataset used is `pneumoniamnist.npz` from [MedMNIST](https://medmnist.com/).
 
-## ⚙️ How to Run (in Google Colab)
-1. Upload the dataset to Colab.
-2. Open `train_and_eval.ipynb`.
-3. Run all cells to train and evaluate the model.
-4. Test accuracy and training plots will be shown.
+## 🛠️ Requirements
+Install dependencies using:
 
-## 🧪 Evaluation
-- Accuracy, Loss
-- Early stopping used
-- Class imbalance handled with weighted loss
+```bash
+pip install -r requirements.txt
+```
 
-## 🧵 Hyperparameters
-- Epochs: 70
-- Batch Size: 64
-- Learning Rate: 0.0001
+## 🚀 Run Training
+To train and evaluate the model:
+
+```bash
+python train_and_eval.py
+```
+
+Make sure `pneumoniamnist.npz` is in the same directory or update the path accordingly.
+
+## 📈 Output
+- Plots training & validation accuracy/loss
+- Prints test accuracy
+
+## ✅ Model
+- Base: `ResNet-50` (ImageNet weights)
+- Layers: GlobalAveragePooling + Dropout + Dense
+- Loss: Binary Crossentropy
+- Optimizer: Adam (lr=1e-4)
